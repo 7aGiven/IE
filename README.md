@@ -1,6 +1,10 @@
 # Introduction
-Launch IE, Maximize and no Toolbar
+Launch IE
 # USE
-ie.exe https://www.baidu.com/
+1. launch with no toolbar and navigate `ie.exe https://www.baidu.com/`
+
+2. launch with toolbar `ie.exe`
+
+when shortcut set Maximize, the IE launch with Maximize.
 # Build
-cl.exe ie.cpp
+cl.exe ie.cpp ie.res
