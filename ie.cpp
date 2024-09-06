@@ -8,7 +8,7 @@ int WinMain(HINSTANCE a1, HINSTANCE a2, LPSTR lpCmdLine, int nShowCmd)
 {
 	IWebBrowser2* ie;
 	VARIANT Flags;
-	SHANDLE_PTR hWnd;
+	HWND hWnd;
 	BSTR bstr;
 	if (*lpCmdLine != 0) {
 		int wslen = MultiByteToWideChar(CP_ACP, 0, lpCmdLine, strlen(lpCmdLine), 0, 0);
@@ -23,8 +23,9 @@ int WinMain(HINSTANCE a1, HINSTANCE a2, LPSTR lpCmdLine, int nShowCmd)
 	if (*lpCmdLine != 0) {
 		ie->put_ToolBar(false);
 	}
-	ie->get_HWND(&hWnd);
-	ShowWindow((HWND)hWnd, nShowCmd);
+	ie->get_HWND((SHANDLE_PTR*)&hWnd);
+	ShowWindow(hWnd, nShowCmd);
+	SetForegroundWindow(hWnd);
 	if (*lpCmdLine != 0) {
 		ie->Navigate(bstr, &Flags, 0, 0, 0);
 	}
